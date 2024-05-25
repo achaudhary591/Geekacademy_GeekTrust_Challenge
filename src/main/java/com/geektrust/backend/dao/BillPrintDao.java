@@ -3,22 +3,22 @@ package com.geektrust.backend.dao;
 import com.geektrust.backend.models.DiscountCoupons;
 
 public class BillPrintDao {
-    private double totalProgrammeFee;
-    private DiscountCoupons couponDiscountType;
-    private double couponDiscountAmount;
-    private double proMembershipDiscount;
-    private double proMembershipFee;
-    private double enrollmentFee;
-    private double total;
+    private final double totalProgrammeFee;
+    private final DiscountCoupons couponDiscountType;
+    private final double couponDiscountAmount;
+    private final double proMembershipDiscount;
+    private final double proMembershipFee;
+    private final double enrollmentFee;
+    private final double totalBillValue;
 
-    public BillPrintDao(double totalProgrammeFee, DiscountCoupons couponDiscountType, double couponDiscountAmount, double proMembershipDiscount, double proMembershipFee, double enrollmentFee, double total) {
+    public BillPrintDao(double totalProgrammeFee, DiscountCoupons couponDiscountType, double couponDiscountAmount, double proMembershipDiscount, double proMembershipFee, double enrollmentFee, double totalBillValue) {
         this.totalProgrammeFee = totalProgrammeFee;
         this.couponDiscountType = couponDiscountType;
         this.couponDiscountAmount = couponDiscountAmount;
         this.proMembershipDiscount = proMembershipDiscount;
         this.proMembershipFee = proMembershipFee;
         this.enrollmentFee = enrollmentFee;
-        this.total = total;
+        this.totalBillValue = totalBillValue;
     }
 
     public double getTotalProgrammeFee() {
@@ -45,19 +45,19 @@ public class BillPrintDao {
         return enrollmentFee;
     }
 
-    public double getTotal() {
-        return total;
+    public double getTotalBillValue() {
+        return totalBillValue;
     }
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return "SUB_TOTAL " + String.format("%.2f",totalProgrammeFee) +
-            "\nCOUPON_DISCOUNT " + couponDiscountType + " " + String.format("%.2f",couponDiscountAmount) +
-            "\nTOTAL_PRO_DISCOUNT " + String.format("%.2f",proMembershipDiscount) +
-            "\nPRO_MEMBERSHIP_FEE " + String.format("%.2f",proMembershipFee) +
-            "\nENROLLMENT_FEE " + String.format("%.2f",enrollmentFee) +
-            "\nTOTAL " + String.format("%.2f",total);
+
+        return "SUB_TOTAL " + String.format("%.2f", totalProgrammeFee) +
+                "\nCOUPON_DISCOUNT " + couponDiscountType + " " + String.format("%.2f", couponDiscountAmount) +
+                "\nTOTAL_PRO_DISCOUNT " + String.format("%.2f", proMembershipDiscount) +
+                "\nPRO_MEMBERSHIP_FEE " + String.format("%.2f", proMembershipFee) +
+                "\nENROLLMENT_FEE " + String.format("%.2f", enrollmentFee) +
+                "\nTOTAL " + String.format("%.2f", totalBillValue);
     }
-    
+
 }

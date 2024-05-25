@@ -1,14 +1,14 @@
 package com.geektrust.backend.service;
 
-import com.geektrust.backend.models.DiscountCoupons;
 import com.geektrust.backend.enums.ProgrammeCategoryEnum;
 import com.geektrust.backend.exceptions.InvalidDiscountCouponException;
 import com.geektrust.backend.exceptions.InvalidProgrammeCategoryException;
+import com.geektrust.backend.models.DiscountCoupons;
 import com.geektrust.backend.repository.IStudentRepository;
 
 public class StudentService implements IStudentService {
 
-    private IStudentRepository studentRepository;
+    private final IStudentRepository studentRepository;
 
     public StudentService(IStudentRepository studentRepository) {
         this.studentRepository = studentRepository;
@@ -16,10 +16,10 @@ public class StudentService implements IStudentService {
 
     @Override
     public void addProgrammes(String programCategoryStr, Integer quantity) {
-        try{
+        try {
             ProgrammeCategoryEnum programmeCategoryEnum = ProgrammeCategoryEnum.valueOf(programCategoryStr);
-            studentRepository.addProgramsToCart(programmeCategoryEnum, quantity);
-        } catch(IllegalArgumentException e) {
+            studentRepository.addProgrammesToCart(programmeCategoryEnum, quantity);
+        } catch (IllegalArgumentException e) {
             throw new InvalidProgrammeCategoryException("Invalid program category: " + programCategoryStr);
         }
 
@@ -32,12 +32,12 @@ public class StudentService implements IStudentService {
 
     @Override
     public void addDiscountCoupon(String discountCouponStr) {
-        try{
+        try {
             DiscountCoupons discountCoupon = DiscountCoupons.valueOf(discountCouponStr);
             studentRepository.addDiscountCoupons(discountCoupon);
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             throw new InvalidDiscountCouponException("Invalid discount coupon: " + discountCouponStr);
         }
     }
-    
+
 }

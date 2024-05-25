@@ -1,9 +1,10 @@
 package com.geektrust.backend.commands;
 
-import java.util.List;
 import com.geektrust.backend.service.IStudentService;
 
-public class AddProgrammeCommand implements ICommand{
+import java.util.List;
+
+public class AddProgrammeCommand implements ICommand {
 
     private final IStudentService studentService;
 
@@ -17,11 +18,10 @@ public class AddProgrammeCommand implements ICommand{
         Integer quantity = Integer.parseInt(tokens.get(2));
         try {
             studentService.addProgrammes(programmeName, quantity);
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
+
     }
-    
+
 }

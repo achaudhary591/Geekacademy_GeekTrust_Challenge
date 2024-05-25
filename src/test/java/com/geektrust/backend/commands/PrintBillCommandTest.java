@@ -41,7 +41,7 @@ class PrintBillCommandTest {
     @Test
     void execute() {
         BillPrintDao billPrintDao = new BillPrintDao(1000, DiscountCoupons.NONE, 0, 100, 100, 500, 1600);
-        when(billingService.calculateBill()).thenReturn(billPrintDao);
+        when(billingService.calculateProgrammeBill()).thenReturn(billPrintDao);
 
         printBillCommand.execute(Collections.emptyList());
 
@@ -57,7 +57,7 @@ class PrintBillCommandTest {
     @Test
     void execute1() {
         BillPrintDao billPrintDao = new BillPrintDao(1000, DiscountCoupons.DEAL_G20, 20, 100, 100, 500, 1580);
-        when(billingService.calculateBill()).thenReturn(billPrintDao);
+        when(billingService.calculateProgrammeBill()).thenReturn(billPrintDao);
         printBillCommand.execute(Collections.emptyList());
 
         String expectedOutput = "SUB_TOTAL 1000.00\n" +

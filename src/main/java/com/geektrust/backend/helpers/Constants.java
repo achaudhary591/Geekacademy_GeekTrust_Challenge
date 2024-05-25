@@ -1,6 +1,6 @@
-package com.geektrust.backend.utils;
+package com.geektrust.backend.helpers;
 
-public class GeekdemyConstants {
+public class Constants {
 
     public static final Double CERTIFICATION_FEES = 3000.00;
     public static final Double DEGREE_FEES = 5000.00;
@@ -12,7 +12,7 @@ public class GeekdemyConstants {
 
     public static final Double PRO_MEMBERSHIP_FEE = 200.00;
     public static final Double ENROLLMENT_FEE = 500.00;
-    public static final Double PROGRAMME_COST_TRESHOLD_FOR_ENROLLMENT_FEE = 6666.00;
+    public static final Double PROGRAMME_COST_THRESHOLD_FOR_ENROLLMENT_FEE = 6666.00;
 
     public static final Double CERTIFICATION_DISCOUNT = 0.02;
     public static final Double DEGREE_DISCOUNT = 0.03;
@@ -26,7 +26,4 @@ public class GeekdemyConstants {
     public static final Boolean FALSE_VALUE = false;
     public static final Boolean TRUE_VALUE = true;
 
-
-
-    
 }

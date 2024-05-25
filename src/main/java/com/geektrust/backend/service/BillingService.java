@@ -1,19 +1,19 @@
 package com.geektrust.backend.service;
 
 import com.geektrust.backend.dao.BillPrintDao;
+import com.geektrust.backend.helpers.Constants;
 import com.geektrust.backend.models.DiscountCoupons;
 import com.geektrust.backend.repository.IBillingRepository;
 import com.geektrust.backend.repository.IStudentRepository;
-import com.geektrust.backend.utils.GeekdemyConstants;
 
 public class BillingService implements IBillingService {
 
 
-    private IStudentRepository studentRepository;
-    private IBillingRepository billingRepository;
+    private final IStudentRepository studentRepository;
+    private final IBillingRepository billingRepository;
 
-    private ICartService cartService;
-    private IDiscountService discountService;
+    private final ICartService cartService;
+    private final IDiscountService discountService;
 
     public BillingService(IStudentRepository studentRepository, IBillingRepository billingRepository, ICartService cartService, IDiscountService discountService) {
         this.studentRepository = studentRepository;
@@ -24,19 +24,19 @@ public class BillingService implements IBillingService {
 
 
     private void calculateTotalCartItemCost() {
-        cartService.calculateTotalCost();
-        if(studentRepository.getStudent().getProMembershipStatus() == true) {
+        cartService.calculateTotalProgrammeCost();
+        if (studentRepository.getStudent().getProMembershipStatus()) {
             cartService.calculateTotalProMembershipDiscount();
         }
     }
 
     private void calculateDiscount() {
-        Integer totalProgrammeCount = studentRepository.getCertificationProgrammeCount() + studentRepository.getDegreeProgrammeCount() + studentRepository.getDiplomaProgrammeCount();
-        if(totalProgrammeCount >= 4) {
+        int totalProgrammeCount = studentRepository.getCertificationProgrammeCount() + studentRepository.getDegreeProgrammeCount() + studentRepository.getDiplomaProgrammeCount();
+        if (totalProgrammeCount >= 4) {
             discountService.applyB4G1Discount();
-        } else if(studentRepository.containsDiscountCoupon(DiscountCoupons.DEAL_G20) && billingRepository.getTotalProgramFees() >= GeekdemyConstants.PROGRAMME_COST_FOR_G20_DISCOUNT) {
+        } else if (studentRepository.containsDiscountCoupon(DiscountCoupons.DEAL_G20) && billingRepository.getTotalProgrammeFees() >= Constants.PROGRAMME_COST_FOR_G20_DISCOUNT) {
             discountService.applyDealG20Discount();
-        } else if(studentRepository.containsDiscountCoupon(DiscountCoupons.DEAL_G5) && totalProgrammeCount >= GeekdemyConstants.PROGRAMME_COUNT_FOR_G5_DISCOUNT) {
+        } else if (studentRepository.containsDiscountCoupon(DiscountCoupons.DEAL_G5) && totalProgrammeCount >= Constants.PROGRAMME_COUNT_FOR_G5_DISCOUNT) {
             discountService.applyDealG5Discount();
         } else {
             discountService.applyNoDiscount();
@@ -44,29 +44,29 @@ public class BillingService implements IBillingService {
 
     }
 
-    private void checkEnrollmentElligibility() {
+    private void checkEnrollmentEligibility() {
         Double totalAmount = billingRepository.getTotalAmount();
-        if(totalAmount < GeekdemyConstants.PROGRAMME_COST_TRESHOLD_FOR_ENROLLMENT_FEE) {
+        if (totalAmount < Constants.PROGRAMME_COST_THRESHOLD_FOR_ENROLLMENT_FEE) {
             billingRepository.addEnrollmentFee();
             billingRepository.setTotalAmount(billingRepository.getTotalAmount() + billingRepository.getEnrollmentFee());
         }
     }
 
     @Override
-    public BillPrintDao calculateBill() {
+    public BillPrintDao calculateProgrammeBill() {
         calculateTotalCartItemCost();
         calculateDiscount();
-        checkEnrollmentElligibility();
+        checkEnrollmentEligibility();
         return new BillPrintDao(
-            billingRepository.getTotalProgramFees(),
-            billingRepository.getCouponDiscount(),
-            billingRepository.getDiscountAmount(),
-            billingRepository.getProMembershipDiscount(),
-            billingRepository.getProMembershipFee(),
-            billingRepository.getEnrollmentFee(),
-            billingRepository.getTotalAmount());
-        
+                billingRepository.getTotalProgrammeFees(),
+                billingRepository.getCouponDiscount(),
+                billingRepository.getDiscountAmount(),
+                billingRepository.getProMembershipDiscount(),
+                billingRepository.getProMembershipFee(),
+                billingRepository.getEnrollmentFee(),
+                billingRepository.getTotalAmount());
+
     }
 
-    
+
 }

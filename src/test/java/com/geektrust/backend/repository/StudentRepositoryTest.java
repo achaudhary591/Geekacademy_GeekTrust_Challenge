@@ -14,14 +14,13 @@ import static org.mockito.Mockito.when;
 public class StudentRepositoryTest {
 
     private StudentRepository studentRepository;
-    private Student student;
     private CertificationProgramme certificationProgramme;
     private DegreeProgramme degreeProgramme;
     private DiplomaProgramme diplomaProgramme;
 
     @BeforeEach
     public void setup() {
-        student = Mockito.mock(Student.class);
+        Student student = Mockito.mock(Student.class);
         certificationProgramme = Mockito.mock(CertificationProgramme.class);
         degreeProgramme = Mockito.mock(DegreeProgramme.class);
         diplomaProgramme = Mockito.mock(DiplomaProgramme.class);
@@ -30,15 +29,15 @@ public class StudentRepositoryTest {
     }
 
     @Test
-    public void testAddProgramsToCart() {
-        studentRepository.addProgramsToCart(ProgrammeCategoryEnum.CERTIFICATION, 2);
-        Mockito.verify(certificationProgramme, Mockito.times(1)).addProgram(2);
+    public void testAddProgrammesToCart() {
+        studentRepository.addProgrammesToCart(ProgrammeCategoryEnum.CERTIFICATION, 2);
+        Mockito.verify(certificationProgramme, Mockito.times(1)).addProgramme(2);
 
-        studentRepository.addProgramsToCart(ProgrammeCategoryEnum.DEGREE, 3);
-        Mockito.verify(degreeProgramme, Mockito.times(1)).addProgram(3);
+        studentRepository.addProgrammesToCart(ProgrammeCategoryEnum.DEGREE, 3);
+        Mockito.verify(degreeProgramme, Mockito.times(1)).addProgramme(3);
 
-        studentRepository.addProgramsToCart(ProgrammeCategoryEnum.DIPLOMA, 4);
-        Mockito.verify(diplomaProgramme, Mockito.times(1)).addProgram(4);
+        studentRepository.addProgrammesToCart(ProgrammeCategoryEnum.DIPLOMA, 4);
+        Mockito.verify(diplomaProgramme, Mockito.times(1)).addProgramme(4);
     }
 
     @Test

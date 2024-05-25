@@ -1,7 +1,8 @@
 package com.geektrust.backend.commands;
 
-import java.util.List;
 import com.geektrust.backend.service.IStudentService;
+
+import java.util.List;
 
 public class AddProMembershipCommand implements ICommand {
 
@@ -13,7 +14,7 @@ public class AddProMembershipCommand implements ICommand {
 
     @Override
     public void execute(List<String> tokens) {
-        studentService.setProMembershipPlan(); 
+        studentService.setProMembershipPlan();
     }
-    
+
 }

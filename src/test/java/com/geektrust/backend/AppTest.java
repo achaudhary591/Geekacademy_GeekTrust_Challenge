@@ -7,7 +7,7 @@ import java.io.PrintStream;
 import java.util.Collections;
 
 
-class MainTest {
+class AppTest {
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
@@ -28,7 +28,7 @@ class MainTest {
                 "ENROLLMENT_FEE 0.00\n" +
                 "TOTAL 10500.00";
         //Act
-        Main.run(Collections.singletonList(argument));
+        App.run(Collections.singletonList(argument));
         //Assert
         Assertions.assertEquals(expectedOutput,outputStreamCaptor.toString().trim());
     }
@@ -45,7 +45,7 @@ class MainTest {
                 "ENROLLMENT_FEE 0.00\n" +
                 "TOTAL 8000.00";
         //Act
-        Main.run(Collections.singletonList(argument));
+        App.run(Collections.singletonList(argument));
         //Assert
         Assertions.assertEquals(expectedOutput,outputStreamCaptor.toString().trim());
     }
@@ -62,7 +62,7 @@ class MainTest {
                 "ENROLLMENT_FEE 500.00\n" +
                 "TOTAL 6115.00";
         //Act
-        Main.run(Collections.singletonList(argument));
+        App.run(Collections.singletonList(argument));
         //Assert
         Assertions.assertEquals(expectedOutput,outputStreamCaptor.toString().trim());
     }

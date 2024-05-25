@@ -1,9 +1,10 @@
 package com.geektrust.backend.commands;
 
-import java.util.List;
 import com.geektrust.backend.service.IStudentService;
 
-public class ApplyCouponCommand implements ICommand{
+import java.util.List;
+
+public class ApplyCouponCommand implements ICommand {
 
     private final IStudentService studentService;
 
@@ -16,5 +17,5 @@ public class ApplyCouponCommand implements ICommand{
         String discountCoupon = tokens.get(1);
         studentService.addDiscountCoupon(discountCoupon);
     }
-    
+
 }

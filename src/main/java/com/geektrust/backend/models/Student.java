@@ -1,8 +1,8 @@
 package com.geektrust.backend.models;
 
-import com.geektrust.backend.utils.GeekdemyConstants;
+import com.geektrust.backend.helpers.Constants;
 
-public class Student extends BaseModel{
+public class Student extends BaseModel {
 
     private Boolean isProMember;
     private Double proMembershipFee;
@@ -10,17 +10,17 @@ public class Student extends BaseModel{
 
     public Student() {
         isProMember = false;
-        proMembershipFee = 0.0;
-        enrollmentFee = 0.0;
+        proMembershipFee = Constants.DOUBLE_INITIALIZE_VALUE;
+        enrollmentFee = Constants.DOUBLE_INITIALIZE_VALUE;
     }
 
     public void addProMembershipPlan() {
         isProMember = true;
-        proMembershipFee = GeekdemyConstants.PRO_MEMBERSHIP_FEE;
+        proMembershipFee = Constants.PRO_MEMBERSHIP_FEE;
     }
 
     public void addEnrollmentFee() {
-        enrollmentFee = GeekdemyConstants.ENROLLMENT_FEE;
+        enrollmentFee = Constants.ENROLLMENT_FEE;
     }
 
     public Boolean getProMembershipStatus() {
@@ -34,5 +34,5 @@ public class Student extends BaseModel{
     public Double getEnrollmentFee() {
         return enrollmentFee;
     }
-    
+
 }

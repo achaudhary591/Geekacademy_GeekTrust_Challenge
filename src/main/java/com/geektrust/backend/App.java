@@ -11,7 +11,7 @@ package com.geektrust.backend;
     import com.geektrust.backend.commands.CommandInvoker;
     import com.geektrust.backend.exceptions.NoSuchCommandException;
 
-    public class Main {
+    public class App {
 
     	public static void main(String[] args) {
     		List<String> commandLineArguments = new LinkedList<>(Arrays.asList(args));
@@ -22,7 +22,6 @@ package com.geektrust.backend;
             CommandInvoker commandInvoker = applicationConfig.getCommandInvoker();
             BufferedReader reader;
             String inputFile = commandLineArgs.get(0);
-            // commandLineArgs.remove(0);
             try {
                 reader = new BufferedReader(new FileReader(inputFile));
                 String line = reader.readLine();

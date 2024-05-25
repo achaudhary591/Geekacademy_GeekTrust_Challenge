@@ -1,7 +1,8 @@
 package com.geektrust.backend.commands;
 
-import java.util.List;
 import com.geektrust.backend.service.IBillingService;
+
+import java.util.List;
 
 public class PrintBillCommand implements ICommand {
 
@@ -13,7 +14,7 @@ public class PrintBillCommand implements ICommand {
 
     @Override
     public void execute(List<String> tokens) {
-        System.out.println(billingService.calculateBill());      
+        System.out.println(billingService.calculateProgrammeBill());
     }
-    
+
 }

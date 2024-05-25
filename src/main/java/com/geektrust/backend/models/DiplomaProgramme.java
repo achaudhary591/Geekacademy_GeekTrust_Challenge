@@ -1,67 +1,59 @@
 package com.geektrust.backend.models;
 
 import com.geektrust.backend.enums.ProgrammeCategoryEnum;
-import com.geektrust.backend.utils.GeekdemyConstants;
+import com.geektrust.backend.helpers.Constants;
 
 public class DiplomaProgramme extends BaseModel implements Programme {
 
     private final ProgrammeCategoryEnum programmeCategoryEnum;
-    private Double programFees;
+    private final Double programmeDiscount;
+    private Double programmeFees;
     private Integer count;
-    private final Double programDiscount;
-
-    private Double programDiscountAmount;
+    private Double programmeDiscountAmount;
 
     public DiplomaProgramme() {
         programmeCategoryEnum = ProgrammeCategoryEnum.DIPLOMA;
-        programFees = GeekdemyConstants.DIPLOMA_FEES;
-        count = 0;
-        programDiscount = GeekdemyConstants.DIPLOMA_DISCOUNT;
-        programDiscountAmount = 0.0;
+        programmeFees = Constants.DIPLOMA_FEES;
+        count = Constants.INTEGER_INITIALIZE_VALUE;
+        programmeDiscount = Constants.DIPLOMA_DISCOUNT;
+        programmeDiscountAmount = Constants.DOUBLE_INITIALIZE_VALUE;
     }
 
     @Override
-    public ProgrammeCategoryEnum getProgram() {
-        // TODO Auto-generated method stub
+    public ProgrammeCategoryEnum getProgramme() {
         return programmeCategoryEnum;
     }
 
     @Override
     public Double getProgrammeFee() {
-        // TODO Auto-generated method stub
-        return programFees;
+        return programmeFees;
     }
 
     @Override
     public void addProgramme(Integer quantity) {
-        // TODO Auto-generated method stub
         count += quantity;
-        
+
     }
 
     @Override
     public Integer getProgrammeCount() {
-        // TODO Auto-generated method stub
         return count;
     }
 
     @Override
     public Double getProgrammeDiscount() {
-        // TODO Auto-generated method stub
-        return programDiscount;
+        return programmeDiscount;
     }
 
     @Override
     public void addProMembershipDiscountCoupon() {
-        // TODO Auto-generated method stub
-        programDiscountAmount = programFees * programDiscount;
-        programFees = programFees * (1 - programDiscount);
+        programmeDiscountAmount = programmeFees * programmeDiscount;
+        programmeFees = programmeFees * (1 - programmeDiscount);
     }
 
     @Override
     public Double getProgrammeDiscountAmount() {
-        // TODO Auto-generated method stub
-        return programDiscountAmount;
+        return programmeDiscountAmount;
     }
-    
+
 }

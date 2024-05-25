@@ -4,5 +4,5 @@ import com.geektrust.backend.dao.BillPrintDao;
 
 
 public interface IBillingService {
-    BillPrintDao calculateBill();
+    BillPrintDao calculateProgrammeBill();
 }
