@@ -26,4 +26,7 @@ public class Constants {
     public static final Boolean FALSE_VALUE = false;
     public static final Boolean TRUE_VALUE = true;
 
+    public static final Integer B4G1_DISCOUNT_PROGRAMME_COUNT = 4;
+    public static final Integer ZERO = 0;
+
 }

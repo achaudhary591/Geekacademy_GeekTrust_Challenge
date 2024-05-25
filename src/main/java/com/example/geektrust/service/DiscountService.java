@@ -20,9 +20,9 @@ public class DiscountService implements IDiscountService {
     public void applyB4G1Discount() {
         billingRepository.setCouponDiscount(DiscountCoupons.B4G1);
         Double discountAmount;
-        if (studentRepository.getDiplomaProgrammeCount() > 0) {
+        if (studentRepository.getDiplomaProgrammeCount() > Constants.ZERO) {
             discountAmount = studentRepository.getDiplomaProgrammeCost();
-        } else if (studentRepository.getCertificationProgrammeCount() > 0) {
+        } else if (studentRepository.getCertificationProgrammeCount() > Constants.ZERO) {
             discountAmount = studentRepository.getCertificationProgrammeCost();
         } else {
             discountAmount = studentRepository.getDegreeProgrammeCost();

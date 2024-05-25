@@ -6,7 +6,7 @@ import com.example.geektrust.models.Student;
 
 public class BillingRepository implements IBillingRepository {
 
-    private Student student;
+    private final Student student;
     private Double totalProgrammeFees;
     private DiscountCoupons discountCoupons;
     private Double discountAmount;
@@ -52,13 +52,6 @@ public class BillingRepository implements IBillingRepository {
 
         this.proMembershipDiscount = proMembershipDiscount;
     }
-
-
-    // @Override
-    // public Discount getDiscount() {
-    //     
-    //     return discount;
-    // }
 
     @Override
     public Double getProMembershipFee() {

@@ -27,7 +27,7 @@ public class CartService implements ICartService {
     }
 
     public void calculateTotalProMembershipDiscount() {
-        Double proMembershipDiscount = Constants.DOUBLE_INITIALIZE_VALUE;
+        double proMembershipDiscount = Constants.DOUBLE_INITIALIZE_VALUE;
         proMembershipDiscount += studentRepository.getCertificationProgrammeCount() * studentRepository.getCertificationProgrammeDiscountAmount();
         proMembershipDiscount += studentRepository.getDegreeProgrammeCount() * studentRepository.getDegreeProgrammeDiscountAmount();
         proMembershipDiscount += studentRepository.getDiplomaProgrammeCount() * studentRepository.getDiplomaProgrammeDiscountAmount();

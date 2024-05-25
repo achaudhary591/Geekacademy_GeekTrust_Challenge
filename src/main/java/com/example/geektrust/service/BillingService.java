@@ -32,7 +32,7 @@ public class BillingService implements IBillingService {
 
     private void calculateDiscount() {
         int totalProgrammeCount = studentRepository.getCertificationProgrammeCount() + studentRepository.getDegreeProgrammeCount() + studentRepository.getDiplomaProgrammeCount();
-        if (totalProgrammeCount >= 4) {
+        if (totalProgrammeCount >= Constants.B4G1_DISCOUNT_PROGRAMME_COUNT) {
             discountService.applyB4G1Discount();
         } else if (studentRepository.containsDiscountCoupon(DiscountCoupons.DEAL_G20) && billingRepository.getTotalProgrammeFees() >= Constants.PROGRAMME_COST_FOR_G20_DISCOUNT) {
             discountService.applyDealG20Discount();
