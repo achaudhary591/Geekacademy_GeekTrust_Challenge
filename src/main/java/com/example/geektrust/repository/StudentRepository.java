@@ -18,13 +18,13 @@ public class StudentRepository implements IStudentRepository {
 
     public StudentRepository(Student student) {
         this.student = student;
-        certificationIProgramme = new CertificationIProgramme();
-        degreeIProgramme = new DegreeIProgramme();
-        diplomaIProgramme = new DiplomaIProgramme();
+        certificationIProgramme = new CertificationProgramme();
+        degreeIProgramme = new DegreeProgramme();
+        diplomaIProgramme = new DiplomaProgramme();
         discountCoupons = new ArrayList<>();
     }
 
-    public StudentRepository(Student student, CertificationIProgramme certificationProgramme, DegreeIProgramme degreeProgramme, DiplomaIProgramme diplomaProgramme) {
+    public StudentRepository(Student student, CertificationProgramme certificationProgramme, DegreeProgramme degreeProgramme, DiplomaProgramme diplomaProgramme) {
         this(student);
         this.certificationIProgramme = certificationProgramme;
         this.degreeIProgramme = degreeProgramme;

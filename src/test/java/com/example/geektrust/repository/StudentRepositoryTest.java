@@ -1,9 +1,9 @@
 package com.example.geektrust.repository;
 
 import com.example.geektrust.enums.ProgrammeCategoryEnum;
-import com.example.geektrust.models.CertificationIProgramme;
-import com.example.geektrust.models.DegreeIProgramme;
-import com.example.geektrust.models.DiplomaIProgramme;
+import com.example.geektrust.models.CertificationProgramme;
+import com.example.geektrust.models.DegreeProgramme;
+import com.example.geektrust.models.DiplomaProgramme;
 import com.example.geektrust.models.Student;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,16 +18,16 @@ import static org.mockito.Mockito.when;
 public class StudentRepositoryTest {
 
     private StudentRepository studentRepository;
-    private CertificationIProgramme certificationProgramme;
-    private DegreeIProgramme degreeProgramme;
-    private DiplomaIProgramme diplomaProgramme;
+    private CertificationProgramme certificationProgramme;
+    private DegreeProgramme degreeProgramme;
+    private DiplomaProgramme diplomaProgramme;
 
     @BeforeEach
     public void setup() {
         Student student = Mockito.mock(Student.class);
-        certificationProgramme = Mockito.mock(CertificationIProgramme.class);
-        degreeProgramme = Mockito.mock(DegreeIProgramme.class);
-        diplomaProgramme = Mockito.mock(DiplomaIProgramme.class);
+        certificationProgramme = Mockito.mock(CertificationProgramme.class);
+        degreeProgramme = Mockito.mock(DegreeProgramme.class);
+        diplomaProgramme = Mockito.mock(DiplomaProgramme.class);
 
         studentRepository = new StudentRepository(student, certificationProgramme, degreeProgramme, diplomaProgramme);
     }

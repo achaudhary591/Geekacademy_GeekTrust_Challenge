@@ -3,17 +3,11 @@ package com.example.geektrust.models;
 import com.example.geektrust.enums.ProgrammeCategoryEnum;
 import com.example.geektrust.helpers.Constants;
 
-public class CertificationIProgramme extends AbstractProgramme implements IProgramme {
-    public CertificationIProgramme() {
+public class CertificationProgramme extends AbstractProgramme implements IProgramme {
+    public CertificationProgramme() {
         super(ProgrammeCategoryEnum.CERTIFICATION, Constants.CERTIFICATION_FEES, Constants.CERTIFICATION_DISCOUNT);
     }
 
-
-
-    @Override
-    public ProgrammeCategoryEnum getProgramme() {
-        return programmeCategoryEnum;
-    }
 
     @Override
     public Double getProgrammeFee() {
@@ -28,11 +22,6 @@ public class CertificationIProgramme extends AbstractProgramme implements IProgr
     @Override
     public Integer getProgrammeCount() {
         return count;
-    }
-
-    @Override
-    public Double getProgrammeDiscount() {
-        return programmeDiscount;
     }
 
     @Override
