@@ -10,9 +10,9 @@ import java.util.List;
 public class StudentRepository implements IStudentRepository {
 
     private final Student student;
-    private IProgramme certificationIProgramme;
-    private IProgramme degreeIProgramme;
-    private IProgramme diplomaIProgramme;
+    private AbstractProgramme certificationIProgramme;
+    private AbstractProgramme degreeIProgramme;
+    private AbstractProgramme diplomaIProgramme;
     private List<DiscountCoupons> discountCoupons;
 
 

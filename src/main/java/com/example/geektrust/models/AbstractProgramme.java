@@ -18,5 +18,20 @@ public abstract class AbstractProgramme extends BaseModel {
         this.count = Constants.INTEGER_INITIALIZE_VALUE;
         this.programmeDiscountAmount = Constants.DOUBLE_INITIALIZE_VALUE;
     }
+
+
+    public abstract Double getProgrammeFee();
+
+
+    public abstract void addProgramme(Integer quantity);
+
+
+    public abstract Integer getProgrammeCount();
+
+
+    public abstract void addProMembershipDiscountCoupon();
+
+
+    public abstract Double getProgrammeDiscountAmount();
 }
 
