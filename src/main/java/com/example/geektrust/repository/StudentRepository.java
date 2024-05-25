@@ -2,8 +2,6 @@ package com.example.geektrust.repository;
 
 import com.example.geektrust.enums.ProgrammeCategoryEnum;
 import com.example.geektrust.models.*;
-import com.example.geektrust.models.*;
-import com.example.geektrust.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,25 +10,25 @@ import java.util.List;
 public class StudentRepository implements IStudentRepository {
 
     private final Student student;
-    private Programme certificationProgramme;
-    private Programme degreeProgramme;
-    private Programme diplomaProgramme;
+    private IProgramme certificationIProgramme;
+    private IProgramme degreeIProgramme;
+    private IProgramme diplomaIProgramme;
     private List<DiscountCoupons> discountCoupons;
 
 
     public StudentRepository(Student student) {
         this.student = student;
-        certificationProgramme = new CertificationProgramme();
-        degreeProgramme = new DegreeProgramme();
-        diplomaProgramme = new DiplomaProgramme();
+        certificationIProgramme = new CertificationIProgramme();
+        degreeIProgramme = new DegreeIProgramme();
+        diplomaIProgramme = new DiplomaIProgramme();
         discountCoupons = new ArrayList<>();
     }
 
-    public StudentRepository(Student student, CertificationProgramme certificationProgramme, DegreeProgramme degreeProgramme, DiplomaProgramme diplomaProgramme) {
+    public StudentRepository(Student student, CertificationIProgramme certificationProgramme, DegreeIProgramme degreeProgramme, DiplomaIProgramme diplomaProgramme) {
         this(student);
-        this.certificationProgramme = certificationProgramme;
-        this.degreeProgramme = degreeProgramme;
-        this.diplomaProgramme = diplomaProgramme;
+        this.certificationIProgramme = certificationProgramme;
+        this.degreeIProgramme = degreeProgramme;
+        this.diplomaIProgramme = diplomaProgramme;
         discountCoupons = new ArrayList<>();
     }
 
@@ -40,45 +38,45 @@ public class StudentRepository implements IStudentRepository {
     }
 
     public Integer getTotalProgrammeCount() {
-        return certificationProgramme.getProgrammeCount() + degreeProgramme.getProgrammeCount() + diplomaProgramme.getProgrammeCount();
+        return certificationIProgramme.getProgrammeCount() + degreeIProgramme.getProgrammeCount() + diplomaIProgramme.getProgrammeCount();
     }
 
     @Override
     public void addProgrammesToCart(ProgrammeCategoryEnum programmeCategoryEnum, Integer quantity) {
         if (programmeCategoryEnum == ProgrammeCategoryEnum.CERTIFICATION) {
-            certificationProgramme.addProgramme(quantity);
+            certificationIProgramme.addProgramme(quantity);
         } else if (programmeCategoryEnum == ProgrammeCategoryEnum.DEGREE) {
-            degreeProgramme.addProgramme(quantity);
+            degreeIProgramme.addProgramme(quantity);
         } else {
-            diplomaProgramme.addProgramme(quantity);
+            diplomaIProgramme.addProgramme(quantity);
         }
     }
 
     @Override
     public void addProMembershipPlan() {
         student.addProMembershipPlan();
-        certificationProgramme.addProMembershipDiscountCoupon();
-        degreeProgramme.addProMembershipDiscountCoupon();
-        diplomaProgramme.addProMembershipDiscountCoupon();
+        certificationIProgramme.addProMembershipDiscountCoupon();
+        degreeIProgramme.addProMembershipDiscountCoupon();
+        diplomaIProgramme.addProMembershipDiscountCoupon();
 
     }
 
     @Override
     public Integer getDegreeProgrammeCount() {
 
-        return degreeProgramme.getProgrammeCount();
+        return degreeIProgramme.getProgrammeCount();
     }
 
     @Override
     public Integer getCertificationProgrammeCount() {
 
-        return certificationProgramme.getProgrammeCount();
+        return certificationIProgramme.getProgrammeCount();
     }
 
     @Override
     public Integer getDiplomaProgrammeCount() {
 
-        return diplomaProgramme.getProgrammeCount();
+        return diplomaIProgramme.getProgrammeCount();
     }
 
 
@@ -93,21 +91,21 @@ public class StudentRepository implements IStudentRepository {
     @Override
     public Double getDegreeProgrammeCost() {
 
-        return degreeProgramme.getProgrammeFee();
+        return degreeIProgramme.getProgrammeFee();
     }
 
 
     @Override
     public Double getCertificationProgrammeCost() {
 
-        return certificationProgramme.getProgrammeFee();
+        return certificationIProgramme.getProgrammeFee();
     }
 
 
     @Override
     public Double getDiplomaProgrammeCost() {
 
-        return diplomaProgramme.getProgrammeFee();
+        return diplomaIProgramme.getProgrammeFee();
     }
 
 
@@ -120,19 +118,19 @@ public class StudentRepository implements IStudentRepository {
     @Override
     public Double getCertificationProgrammeDiscountAmount() {
 
-        return certificationProgramme.getProgrammeDiscountAmount();
+        return certificationIProgramme.getProgrammeDiscountAmount();
     }
 
     @Override
     public Double getDegreeProgrammeDiscountAmount() {
 
-        return degreeProgramme.getProgrammeDiscountAmount();
+        return degreeIProgramme.getProgrammeDiscountAmount();
     }
 
     @Override
     public Double getDiplomaProgrammeDiscountAmount() {
 
-        return diplomaProgramme.getProgrammeDiscountAmount();
+        return diplomaIProgramme.getProgrammeDiscountAmount();
     }
 
 
